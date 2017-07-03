@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7B648AE1-052A-4148-8558-9F839521C747}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>gapi</RootNamespace>
+    <AssemblyName>gapi</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b9a188c8922137c6">
+      <Package>monodevelop</Package>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Apis\Download\IDownloadProgress.cs" />
+    <Compile Include="Apis\Download\IMediaDownloader.cs" />
+    <Compile Include="Apis\Download\MediaDownloader.cs" />
+    <Compile Include="Apis\Requests\BatchRequest.cs" />
+    <Compile Include="Apis\Requests\ClientServiceRequest.cs" />
+    <Compile Include="Apis\Requests\HttpRequestMessageExtenstions.cs" />
+    <Compile Include="Apis\Requests\IClientServiceRequest.cs" />
+    <Compile Include="Apis\Requests\IDirectResponseSchema.cs" />
+    <Compile Include="Apis\Requests\PageStreamer.cs" />
+    <Compile Include="Apis\Media\MediaApiErrorHandling.cs" />
+    <Compile Include="Apis\Services\BaseClientService.cs" />
+    <Compile Include="Apis\Services\IClientService.cs" />
+    <Compile Include="Apis\Upload\IUploadProgress.cs" />
+    <Compile Include="Apis\Upload\IUploadSessionData.cs" />
+    <Compile Include="Apis\Upload\ResumableUpload.cs" />
+    <Compile Include="Apis\Upload\ResumableUploadOptions.cs" />
+    <Compile Include="Apis\Util\Store\FileDataStore.cs" />
+    <Compile Include="Apis\Util\Store\NullDataStore.cs" />
+    <Compile Include="Apis\ETagAction.cs" />
+    <Compile Include="Apis.Auth\GoogleJsonWebSignature.cs" />
+    <Compile Include="Apis.Auth\InvalidJwtException.cs" />
+    <Compile Include="Apis.Auth\JsonWebSignature.cs" />
+    <Compile Include="Apis.Auth\JsonWebToken.cs" />
+    <Compile Include="Apis.Auth\OAuth2\AuthorizationCodeInstalledApp.cs" />
+    <Compile Include="Apis.Auth\OAuth2\BearerToken.cs" />
+    <Compile Include="Apis.Auth\OAuth2\ClientSecrets.cs" />
+    <Compile Include="Apis.Auth\OAuth2\GoogleCredential.cs" />
+    <Compile Include="Apis.Auth\OAuth2\GoogleWebAuthorizationBroker.cs" />
+    <Compile Include="Apis.Auth\OAuth2\IAccessMethod.cs" />
+    <Compile Include="Apis.Auth\OAuth2\JsonCredentialParameters.cs" />
+    <Compile Include="Apis.Auth\OAuth2\LocalServerCodeReceiver.cs" />
+    <Compile Include="Apis.Auth\OAuth2\Pkcs8.cs" />
+    <Compile Include="Apis.Auth\OAuth2\ComputeCredential.cs" />
+    <Compile Include="Apis.Auth\OAuth2\DefaultCredentialProvider.cs" />
+    <Compile Include="Apis.Auth\OAuth2\GoogleAuthConsts.cs" />
+    <Compile Include="Apis.Auth\OAuth2\GoogleClientSecrets.cs" />
+    <Compile Include="Apis.Auth\OAuth2\IAuthorizationCodeInstalledApp.cs" />
+    <Compile Include="Apis.Auth\OAuth2\ICodeReceiver.cs" />
+    <Compile Include="Apis.Auth\OAuth2\ICredential.cs" />
+    <Compile Include="Apis.Auth\OAuth2\ITokenAccess.cs" />
+    <Compile Include="Apis.Auth\OAuth2\PromptCodeReceiver.cs" />
+    <Compile Include="Apis.Auth\OAuth2\ServiceAccountCredential.cs" />
+    <Compile Include="Apis.Auth\OAuth2\ServiceCredential.cs" />
+    <Compile Include="Apis.Auth\OAuth2\UserCredential.cs" />
+    <Compile Include="Apis.Auth\OAuth2\Web\AuthorizationCodeWebApp.cs" />
+    <Compile Include="Apis.Auth\OAuth2\Web\AuthWebUtility.cs" />
+    <Compile Include="Apis.Auth\OAuth2\Responses\AuthorizationCodeResponseUrl.cs" />
+    <Compile Include="Apis.Auth\OAuth2\Responses\TokenErrorResponse.cs" />
+    <Compile Include="Apis.Auth\OAuth2\Responses\TokenResponse.cs" />
+    <Compile Include="Apis.Auth\OAuth2\Responses\TokenResponseException.cs" />
+    <Compile Include="Apis.Auth\OAuth2\Requests\AuthorizationCodeRequestUrl.cs" />
+    <Compile Include="Apis.Auth\OAuth2\Requests\AuthorizationCodeTokenRequest.cs" />
+    <Compile Include="Apis.Auth\OAuth2\Requests\AuthorizationRequestUrl.cs" />
+    <Compile Include="Apis.Auth\OAuth2\Requests\GoogleAssertionTokenRequest.cs" />
+    <Compile Include="Apis.Auth\OAuth2\Requests\GoogleAuthorizationCodeRequestUrl.cs" />
+    <Compile Include="Apis.Auth\OAuth2\Requests\GoogleRevokeTokenRequest.cs" />
+    <Compile Include="Apis.Auth\OAuth2\Requests\RefreshTokenRequest.cs" />
+    <Compile Include="Apis.Auth\OAuth2\Requests\TokenRequest.cs" />
+    <Compile Include="Apis.Auth\OAuth2\Requests\TokenRequestExtenstions.cs" />
+    <Compile Include="Apis.Auth\OAuth2\Flows\AuthorizationCodeFlow.cs" />
+    <Compile Include="Apis.Auth\OAuth2\Flows\GoogleAuthorizationCodeFlow.cs" />
+    <Compile Include="Apis.Auth\OAuth2\Flows\IAuthorizationCodeFlow.cs" />
+    <Compile Include="Apis.Core\ApplicationContext.cs" />
+    <Compile Include="Apis.Core\GoogleApiException.cs" />
+    <Compile Include="Apis.Core\ISerializer.cs" />
+    <Compile Include="Apis.Core\Util\Store\IDataStore.cs" />
+    <Compile Include="Apis.Core\Util\ExponentialBackOff.cs" />
+    <Compile Include="Apis.Core\Util\IBackOff.cs" />
+    <Compile Include="Apis.Core\Util\IClock.cs" />
+    <Compile Include="Apis.Core\Util\Repeatable.cs" />
+    <Compile Include="Apis.Core\Util\RequestParameterAttribute.cs" />
+    <Compile Include="Apis.Core\Util\StandardResponse.cs" />
+    <Compile Include="Apis.Core\Util\StringValueAttribute.cs" />
+    <Compile Include="Apis.Core\Util\UriPatcher.cs" />
+    <Compile Include="Apis.Core\Util\Utilities.cs" />
+    <Compile Include="Apis.Core\Testing\VisibleForTestOnly.cs" />
+    <Compile Include="Apis.Core\Requests\RequestBuilder.cs" />
+    <Compile Include="Apis.Core\Requests\RequestError.cs" />
+    <Compile Include="Apis.Core\Requests\SingleError.cs" />
+    <Compile Include="Apis.Core\Requests\Parameters\ParameterCollection.cs" />
+    <Compile Include="Apis.Core\Requests\Parameters\ParameterUtils.cs" />
+    <Compile Include="Apis.Core\Requests\Parameters\ParameterValidator.cs" />
+    <Compile Include="Apis.Core\Logging\BaseLogger.cs" />
+    <Compile Include="Apis.Core\Logging\ConsoleLogger.cs" />
+    <Compile Include="Apis.Core\Logging\ILogger.cs" />
+    <Compile Include="Apis.Core\Logging\LogLevel.cs" />
+    <Compile Include="Apis.Core\Logging\MemoryLogger.cs" />
+    <Compile Include="Apis.Core\Logging\NullLogger.cs" />
+    <Compile Include="Apis.Core\Json\IJsonSerializer.cs" />
+    <Compile Include="Apis.Core\Json\JsonExplicitNull.cs" />
+    <Compile Include="Apis.Core\Json\JsonExplicitNullAttribute.cs" />
+    <Compile Include="Apis.Core\Json\NewtonsoftJsonSerializer.cs" />
+    <Compile Include="Apis.Core\Http\BackOffHandler.cs" />
+    <Compile Include="Apis.Core\Http\ConfigurableHttpClient.cs" />
+    <Compile Include="Apis.Core\Http\ConfigurableMessageHandler.cs" />
+    <Compile Include="Apis.Core\Http\ExponentialBackOffInitializer.cs" />
+    <Compile Include="Apis.Core\Http\HttpClientFactory.cs" />
+    <Compile Include="Apis.Core\Http\HttpConsts.cs" />
+    <Compile Include="Apis.Core\Http\HttpExtenstions.cs" />
+    <Compile Include="Apis.Core\Http\IConfigurableHttpClientInitializer.cs" />
+    <Compile Include="Apis.Core\Http\IHttpClientFactory.cs" />
+    <Compile Include="Apis.Core\Http\IHttpExceptionHandler.cs" />
+    <Compile Include="Apis.Core\Http\IHttpExecuteInterceptor.cs" />
+    <Compile Include="Apis.Core\Http\IHttpUnsuccessfulResponseHandler.cs" />
+    <Compile Include="Apis.Core\Http\MaxUrlLengthInterceptor.cs" />
+    <Compile Include="Apis.Core\Discovery\DiscoveryVersion.cs" />
+    <Compile Include="Apis.Core\Discovery\Features.cs" />
+    <Compile Include="Apis.Core\Discovery\IParameter.cs" />
+    <Compile Include="Apis.Core\Discovery\Parameter.cs" />
+    <Compile Include="Generated\Google.Apis.Calendar.v3.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Apis\" />
+    <Folder Include="Apis\Download\" />
+    <Folder Include="Apis\Requests\" />
+    <Folder Include="Apis\Media\" />
+    <Folder Include="Apis\Services\" />
+    <Folder Include="Apis\Upload\" />
+    <Folder Include="Apis\Util\" />
+    <Folder Include="Apis.Auth\" />
+    <Folder Include="Apis.Auth\OAuth2\" />
+    <Folder Include="Apis.Auth\OAuth2\Web\" />
+    <Folder Include="Apis.Auth\OAuth2\Responses\" />
+    <Folder Include="Apis.Auth\OAuth2\Requests\" />
+    <Folder Include="Apis.Auth\OAuth2\Flows\" />
+    <Folder Include="Apis.Core\" />
+    <Folder Include="Apis.Core\Util\" />
+    <Folder Include="Apis.Core\Util\Store\" />
+    <Folder Include="Apis.Core\Testing\" />
+    <Folder Include="Apis.Core\Requests\" />
+    <Folder Include="Apis.Core\Requests\Parameters\" />
+    <Folder Include="Apis.Core\Logging\" />
+    <Folder Include="Apis.Core\Json\" />
+    <Folder Include="Apis.Core\Http\" />
+    <Folder Include="Apis.Core\Discovery\" />
+    <Folder Include="Generated\" />
+  </ItemGroup>
+</Project>
