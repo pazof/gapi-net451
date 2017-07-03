@@ -146,6 +146,7 @@
     <Compile Include="Apis.Core\Discovery\IParameter.cs" />
     <Compile Include="Apis.Core\Discovery\Parameter.cs" />
     <Compile Include="Generated\Google.Apis.Calendar.v3.cs" />
+    <Compile Include="Google.Apis.Compute.v1\Google.Apis.Compute.v1.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
