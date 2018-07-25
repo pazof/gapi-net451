@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -28,11 +28,11 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b9a188c8922137c6">
-      <Package>monodevelop</Package>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -149,30 +149,8 @@
     <Compile Include="Google.Apis.Compute.v1\Google.Apis.Compute.v1.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Apis\" />
-    <Folder Include="Apis\Download\" />
-    <Folder Include="Apis\Requests\" />
-    <Folder Include="Apis\Media\" />
-    <Folder Include="Apis\Services\" />
-    <Folder Include="Apis\Upload\" />
-    <Folder Include="Apis\Util\" />
-    <Folder Include="Apis.Auth\" />
-    <Folder Include="Apis.Auth\OAuth2\" />
-    <Folder Include="Apis.Auth\OAuth2\Web\" />
-    <Folder Include="Apis.Auth\OAuth2\Responses\" />
-    <Folder Include="Apis.Auth\OAuth2\Requests\" />
-    <Folder Include="Apis.Auth\OAuth2\Flows\" />
-    <Folder Include="Apis.Core\" />
-    <Folder Include="Apis.Core\Util\" />
-    <Folder Include="Apis.Core\Util\Store\" />
-    <Folder Include="Apis.Core\Testing\" />
-    <Folder Include="Apis.Core\Requests\" />
-    <Folder Include="Apis.Core\Requests\Parameters\" />
-    <Folder Include="Apis.Core\Logging\" />
-    <Folder Include="Apis.Core\Json\" />
-    <Folder Include="Apis.Core\Http\" />
-    <Folder Include="Apis.Core\Discovery\" />
-    <Folder Include="Generated\" />
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
