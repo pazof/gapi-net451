@@ -3,7 +3,7 @@
 	<metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 		<id>Gapi.net45</id>
 		<title>Gapi.net45</title>
-		<version>1.0.0</version>
+		<version>1.0.1</version>
 		<authors>Paul Schneider</authors>
 		<owners>Google</owners>
 		<licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
@@ -24,6 +24,7 @@ Supported Platforms:
 			Google APIs Core Library + Calendar API v3
 		</summary>
 		<tags>Calendar Google</tags>
+    <releaseNotes>Adds explicit dnx451 compatibility to this package</releaseNotes>
 	</metadata>
 	<files>
 		<file src="bin/Release/gapi.dll" target="lib/net451" />
