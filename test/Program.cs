@@ -14,30 +14,48 @@ namespace test
 
 		static string[] Scopes = { CalendarService.Scope.CalendarReadonly };
 
-		public static async Task TestOne()
+		public static async Task TestOne(string userEmail)
 		{
+      
 			GoogleCredential credential = await GoogleCredential.GetApplicationDefaultAsync();
 			var baseClientService = new BaseClientService.Initializer()
 				{
 					HttpClientInitializer = credential
 				};
 			Console.WriteLine (JsonConvert.SerializeObject (baseClientService));
-			var compute = new ComputeService(new BaseClientService.Initializer()
-				{
-					HttpClientInitializer = credential
-				});
+			
 			if (credential.IsCreateScopedRequired)
 			{
 				credential = credential.CreateScoped(Scopes);
 			}
-			Console.WriteLine ("##Key!!!:\n"+JsonConvert.SerializeObject (credential));
+
+            var compute = new ComputeService(new BaseClientService.Initializer()
+            {
+                HttpClientInitializer = credential
+            });
+
+            Console.WriteLine ("##Key!!!:\n"+JsonConvert.SerializeObject (credential));
 			var service = new CalendarService(new BaseClientService.Initializer()
 				{
 					HttpClientInitializer = credential,
 					ApplicationName = "Yavsc"
 				});
 			// Define parameters of request.
-			EventsResource.ListRequest request = service.Events.List("redienhcs.luap@gmail.com");
+			String pageToken = null;
+
+			CalendarListResource.ListRequest calListReq = service.CalendarList.List ();
+			do {
+				calListReq.PageToken = pageToken;
+				var list = calListReq.Execute ();
+				foreach (var calEntry in list.Items) 
+				{
+					Console.WriteLine($"{calEntry.Id} : {calEntry.Summary}");
+				}
+
+				pageToken = list.NextPageToken;
+			} while (pageToken != null);
+
+			EventsResource.ListRequest request = service.Events.List(userEmail);
 			request.TimeMin = DateTime.Now;
 			request.ShowDeleted = false;
 			request.SingleEvents = true;
@@ -63,15 +81,24 @@ namespace test
 				Console.WriteLine("No upcoming events found.");
 			}
 			Console.Read();
+            var startDate = DateTime.Now.AddMinutes(5);
+            var endDate = startDate.AddMinutes(15);
 
-			
-		}
+            Event ev = new Event {
+                   Start = new EventDateTime() { DateTime = startDate },
+                   End = new EventDateTime() { DateTime = endDate },
+                   Summary = "Insert test",
+                   Description = "Insert descrptX test"
+            };
+            var queryInsert = service.Events.Insert(ev, userEmail);
+            var resultingEv = await queryInsert.ExecuteAsync();
+        }
 		public  static void Main (string[] args)
 		{
 			Environment.SetEnvironmentVariable ("GOOGLE_APPLICATION_CREDENTIALS", "google-secret.json");
-
-			Task.Run (async () => await TestOne ()).Wait();
-			Console.WriteLine ("Hello World!");
+            Console.WriteLine ("Hello World!\nPlease enter your calendar id:\n> ");
+            string userEmail = Console.ReadLine(); 
+			Task.Run (async () => await TestOne (userEmail)).Wait();
 
 		}
 	}
