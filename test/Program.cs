@@ -19,7 +19,7 @@ namespace test
     class MainClass
     {
 
-        static string[] Scopes = { CalendarService.Scope.CalendarReadonly };
+        static string[] Scopes = { CalendarService.Scope.Calendar, "https://www.googleapis.com/auth/calendar.events" };
 
         public static async Task TestBase()
         {
