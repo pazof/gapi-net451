@@ -95,7 +95,6 @@ namespace test
             {
                 Console.WriteLine("No upcoming events found.");
             }
-            Console.Read();
             var startDate = DateTime.Now.AddMinutes(5);
             var endDate = startDate.AddMinutes(15);
 
