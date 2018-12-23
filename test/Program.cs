@@ -6,9 +6,16 @@ using Newtonsoft.Json;
 using Google.Apis.Compute.v1;
 using Google.Apis.Calendar.v3;
 using Google.Apis.Calendar.v3.Data;
+using System.IO;
+
 
 namespace test
 {
+
+  public class UserSecret {
+    public string calendar_id { get; set; }
+  }
+
     class MainClass
     {
 
@@ -21,6 +28,7 @@ namespace test
             {
                 HttpClientInitializer = credential
             };
+            
             Console.WriteLine(JsonConvert.SerializeObject(baseClientService.ApiKey));
 
             var compute = new ComputeService(new BaseClientService.Initializer()
@@ -102,14 +110,20 @@ namespace test
             var resultingEv = await queryInsert.ExecuteAsync();
         }
 
-        static string _userSercetFile = "user-secret.Json";
-        static string _calendarIdKey = "calendar_id";
+        static string _userSecretFile = "user-secret.json";
+        
         public static void Main(string[] args)
         {
+            FileInfo fi = new FileInfo(_userSecretFile);
+            if (!fi.Exists) 
+            {
+              Console.WriteLine($"no user info ({_userSecretFile})");
+              return;
+            }
+            var userJson = fi.OpenText().ReadToEnd();
+            var user = JsonConvert.DeserializeObject<UserSecret>(userJson);
 
-
-            string userEmail = Console.ReadLine();
-            Task.Run(async () => await TestOne(userEmail)).Wait();
+            Task.Run(async () => await TestOne(user.calendar_id)).Wait();
 
         }
     }
