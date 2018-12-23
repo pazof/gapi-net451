@@ -48,6 +48,9 @@ namespace test
                 credential = credential.CreateScoped(Scopes);
             }
 
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+
 
             var service = new CalendarService(new BaseClientService.Initializer()
             {
